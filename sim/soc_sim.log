@@ -1,0 +1,18 @@
+iverilog -g2005-sv -o tb_soc.vvp \
+  -DFW_HEX=\"../fw/build/firmware_sim.hex\" -DOUT_BIN=\"soc_tpu_out.bin\" \
+  -DCPU_BIN=\"soc_cpu_out.bin\" \
+  tb_soc.v ../rtl/pe.v ../rtl/systolic_array.v ../rtl/postproc.v ../rtl/sobel_tpu.v ../rtl/picorv32_bd_wrapper.v ../../picorv32/picorv32.v
+vvp tb_soc.vvp
+WARNING: tb_soc.v:165: $readmemh(../fw/build/firmware_sim.hex): Not enough words in the file for the requested range [0:65535].
+
+SOBEL-TPU app v1
+TPU MAGIC ok
+python3 compare.py soc_tpu_out.bin ../host/out/golden_int.bin
+Traceback (most recent call last):
+  File "/home/amrut/TPU-Core/sobel-tpu/sim/compare.py", line 42, in <module>
+    main()
+  File "/home/amrut/TPU-Core/sobel-tpu/sim/compare.py", line 17, in main
+    a = np.fromfile(out_bin, dtype=np.uint8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'soc_tpu_out.bin'
+make: *** [Makefile:32: soc] Error 1
