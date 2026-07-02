@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="system_bram_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_bram_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_tpu_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_clk_wiz_0_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_clk_wiz_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_cpu_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_cpu_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rst_0_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_rst_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_smc_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_axi_smc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_bram_ctrl_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_bram_ctrl_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_gpio_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_gpio_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_uart_0_synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_uart_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="system_bram_0_synth_1"/>
+		<Parent Id="system_tpu_0_synth_1"/>
+		<Parent Id="system_clk_wiz_0_0_synth_1"/>
+		<Parent Id="system_cpu_0_synth_1"/>
+		<Parent Id="system_rst_0_0_synth_1"/>
+		<Parent Id="system_axi_smc_0_synth_1"/>
+		<Parent Id="system_bram_ctrl_0_synth_1"/>
+		<Parent Id="system_gpio_0_synth_1"/>
+		<Parent Id="system_uart_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+		<Parameter Name="general.ignorePathLengthChecks" Val="true" Type="bool"/>
+		<Parameter Name="general.shortenLongPath" Val="true" Type="bool"/>
+	</Parameters>
+	<ProductInfo Name="vivado"/>
+</Runs>
+

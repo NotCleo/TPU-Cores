@@ -1,0 +1,1111 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul  2 21:21:45 2026
+# Process ID: 229561
+# Current directory: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1
+# Command line: vivado -log system_tpu_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_tpu_0.tcl
+# Log file: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1/system_tpu_0.vds
+# Journal file: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1/vivado.jou
+# Running On: Maverick, OS: Linux, CPU Frequency: 4106.948 MHz, CPU Physical cores: 16, Host memory: 15454 MB
+#-----------------------------------------------------------
+source system_tpu_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1302.793 ; gain = 35.840 ; free physical = 8228 ; free virtual = 24955
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_tpu_0
+Command: synth_design -top system_tpu_0 -part xc7a100tcsg324-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 229691
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2062.305 ; gain = 402.629 ; free physical = 4126 ; free virtual = 20853
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_tpu_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_tpu_0/synth/system_tpu_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'sobel_tpu' [/home/amrut/TPU-Core/sobel-tpu/rtl/sobel_tpu.v:32]
+INFO: [Synth 8-6157] synthesizing module 'systolic_array' [/home/amrut/TPU-Core/sobel-tpu/rtl/systolic_array.v:17]
+INFO: [Synth 8-6157] synthesizing module 'pe' [/home/amrut/TPU-Core/sobel-tpu/rtl/pe.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'pe' (0#1) [/home/amrut/TPU-Core/sobel-tpu/rtl/pe.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'systolic_array' (0#1) [/home/amrut/TPU-Core/sobel-tpu/rtl/systolic_array.v:17]
+INFO: [Synth 8-6157] synthesizing module 'postproc' [/home/amrut/TPU-Core/sobel-tpu/rtl/postproc.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'postproc' (0#1) [/home/amrut/TPU-Core/sobel-tpu/rtl/postproc.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'sobel_tpu' (0#1) [/home/amrut/TPU-Core/sobel-tpu/rtl/sobel_tpu.v:32]
+INFO: [Synth 8-6155] done synthesizing module 'system_tpu_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_tpu_0/synth/system_tpu_0.v:53]
+WARNING: [Synth 8-7129] Port s_axi_awprot[2] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[1] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[0] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[2] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[1] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[0] in module sobel_tpu is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2189.242 ; gain = 529.566 ; free physical = 3723 ; free virtual = 20453
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2204.086 ; gain = 544.410 ; free physical = 3710 ; free virtual = 20440
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2204.086 ; gain = 544.410 ; free physical = 3709 ; free virtual = 20438
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2204.086 ; gain = 0.000 ; free physical = 3693 ; free virtual = 20422
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2345.836 ; gain = 0.000 ; free physical = 3610 ; free virtual = 20340
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2345.871 ; gain = 0.000 ; free physical = 3606 ; free virtual = 20336
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3438 ; free virtual = 20170
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3438 ; free virtual = 20170
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3438 ; free virtual = 20170
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'sobel_tpu'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sobel_tpu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  R_IDLE |                              001 |                               00
+                   R_CAP |                              010 |                               01
+                  R_RESP |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'one-hot' in module 'sobel_tpu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                              000 |                              000
+                 S_PRIME |                              001 |                              001
+                  S_WAIT |                              010 |                              010
+               S_COMPUTE |                              011 |                              011
+                 S_DRAIN |                              100 |                              100
+                 S_CLEAR |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sobel_tpu'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3436 ; free virtual = 20169
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   21 Bit       Adders := 2     
+	   2 Input   20 Bit       Adders := 4     
+	   2 Input   17 Bit       Adders := 2     
+	   2 Input   14 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 2     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 2     
+	   3 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 3     
++---Registers : 
+	              128 Bit    Registers := 6     
+	               72 Bit    Registers := 1     
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 6     
+	               24 Bit    Registers := 1     
+	               20 Bit    Registers := 68    
+	               18 Bit    Registers := 2     
+	               17 Bit    Registers := 2     
+	               14 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                9 Bit    Registers := 92    
+	                8 Bit    Registers := 164   
+	                7 Bit    Registers := 3     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 10    
+	                1 Bit    Registers := 10    
++---RAMs : 
+	             512K Bit	(16384 X 32 bit)          RAMs := 2     
++---Muxes : 
+	   2 Input  128 Bit        Muxes := 30    
+	   3 Input  128 Bit        Muxes := 1     
+	   2 Input   72 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 11    
+	   6 Input   32 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 3     
+	   6 Input   24 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 3     
+	   6 Input   20 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 2     
+	   6 Input   14 Bit        Muxes := 1     
+	   2 Input   14 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 13    
+	   4 Input    8 Bit        Muxes := 1     
+	   6 Input    5 Bit        Muxes := 1     
+	   6 Input    4 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 4     
+	   6 Input    2 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 96    
+	   3 Input    1 Bit        Muxes := 3     
+	   4 Input    1 Bit        Muxes := 3     
+	   6 Input    1 Bit        Muxes := 15    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A*B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: operator prod is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP prod, operation Mode is: A*B.
+DSP Report: operator prod is absorbed into DSP prod.
+DSP Report: Generating DSP acc_reg, operation Mode is: (P+A:B)'.
+DSP Report: register acc_reg is absorbed into DSP acc_reg.
+DSP Report: operator acc0 is absorbed into DSP acc_reg.
+DSP Report: Generating DSP ntiles_reg, operation Mode is: (A2*B2)'.
+DSP Report: register tiles_row_reg is absorbed into DSP ntiles_reg.
+DSP Report: register out_rows_reg is absorbed into DSP ntiles_reg.
+DSP Report: register ntiles_reg is absorbed into DSP ntiles_reg.
+DSP Report: operator ntiles0 is absorbed into DSP ntiles_reg.
+WARNING: [Synth 8-7129] Port s_axi_awprot[2] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[1] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[0] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[2] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[1] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[0] in module sobel_tpu is either unconnected or has no load
+WARNING: [Synth 8-6841] Block RAM (ibuf_reg) originally specified as a Byte Wide Write Enable RAM cannot take advantage of ByteWide feature and is implemented with single write enable per RAM due to following reason.
+(address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired.)
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3660 ; free virtual = 20394
+---------------------------------------------------------------------------------
+ Sort Area is  acc_reg_0 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_2 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_3 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_4 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_5 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_6 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_7 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_8 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_9 : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_a : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_b : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_c : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_d : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_e : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  acc_reg_f : 0 0 : 585 585 : Used 1 time 100
+ Sort Area is  prod_10 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_14 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_16 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_18 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_1a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_1c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_1e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_20 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_22 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_24 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_26 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_28 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_2a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_2c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_2e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_30 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_32 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_34 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_36 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_38 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_3a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_3c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_3e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_40 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_42 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_44 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_46 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_48 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_4a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_4c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_4e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_50 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_52 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_54 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_56 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_58 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_5a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_5c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_5e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_60 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_62 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_64 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_66 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_68 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_6a : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_6c : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_6e : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_70 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  prod_72 : 0 0 : 502 502 : Used 1 time 100
+ Sort Area is  acc_reg_12 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_15 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_17 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_19 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_1b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_1d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_1f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_21 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_23 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_25 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_27 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_29 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_2b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_2d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_2f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_31 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_33 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_35 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_37 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_39 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_3b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_3d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_3f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_41 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_43 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_45 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_47 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_49 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_4b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_4d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_4f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_51 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_53 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_55 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_57 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_59 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_5b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_5d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_5f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_61 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_63 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_65 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_67 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_69 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_6b : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_6d : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_6f : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_71 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  acc_reg_73 : 0 0 : 79 79 : Used 1 time 100
+ Sort Area is  ntiles_reg_74 : 0 0 : 478 478 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inst        | obuf_reg   | 16 K x 32(READ_FIRST)  | W |   | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
+|inst        | ibuf_reg   | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | (P+A*B)'    | 9      | 8      | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A*B         | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|sobel_tpu   | (A2*B2)'    | 10     | 7      | -      | -      | 17     | 1    | 1    | -    | -    | -     | 1    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3963 ; free virtual = 20700
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 3966 ; free virtual = 20703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inst        | obuf_reg   | 16 K x 32(READ_FIRST)  | W |   | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
+|inst        | ibuf_reg   | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/obuf_reg_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_0_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_2_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/ibuf_reg_3_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5522 ; free virtual = 22259
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5196 ; free virtual = 21937
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5180 ; free virtual = 21921
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++-------------+---------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name  | RTL Name                                    | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++-------------+---------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|system_tpu_0 | inst/u_array/g_bskew[5].g_dly.dly_reg[3][7] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_bskew[6].g_dly.dly_reg[4][7] | 5      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_bskew[7].g_dly.dly_reg[5][7] | 6      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_askew[4].g_dly.dly_reg[2][7] | 4      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_askew[5].g_dly.dly_reg[3][7] | 5      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_askew[6].g_dly.dly_reg[4][7] | 6      | 8     | YES          | NO                 | YES               | 8      | 0       | 
+|system_tpu_0 | inst/u_array/g_askew[7].g_dly.dly_reg[5][7] | 7      | 8     | YES          | NO                 | YES               | 8      | 0       | 
++-------------+---------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|sobel_tpu   | (A'*B')'    | 10     | 7      | -      | -      | 17     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|pe          | A'*B'       | 8      | 18     | -      | -      | 17     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B'      | 8      | 18     | -      | -      | 17     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B'      | 8      | 18     | -      | -      | 17     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|pe          | A''*B''     | 8      | 18     | -      | -      | 17     | 2    | 2    | -    | -    | -     | 0    | 0    | 
+|pe          | (P+A:B)'    | 2      | 18     | -      | -      | 20     | 0    | 0    | -    | -    | -     | 0    | 1    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    73|
+|2     |DSP48E1  |   129|
+|7     |LUT1     |    70|
+|8     |LUT2     |   219|
+|9     |LUT3     |   155|
+|10    |LUT4     |   138|
+|11    |LUT5     |   409|
+|12    |LUT6     |  1268|
+|13    |MUXF7    |   279|
+|14    |MUXF8    |   112|
+|15    |RAMB36E1 |    32|
+|16    |SRL16E   |    56|
+|17    |FDRE     |  2794|
+|18    |FDSE     |    12|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2345.871 ; gain = 544.410 ; free physical = 5156 ; free virtual = 21897
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2345.871 ; gain = 686.195 ; free physical = 5156 ; free virtual = 21897
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2345.871 ; gain = 0.000 ; free physical = 5354 ; free virtual = 22095
+INFO: [Netlist 29-17] Analyzing 625 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2345.871 ; gain = 0.000 ; free physical = 5366 ; free virtual = 22107
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 3f219f6c
+INFO: [Common 17-83] Releasing license: Synthesis
+81 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:37 . Memory (MB): peak = 2345.871 ; gain = 1030.203 ; free physical = 5365 ; free virtual = 22107
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1778.254; main = 1437.147; forked = 341.106
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3304.312; main = 2345.840; forked = 990.488
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2369.848 ; gain = 0.000 ; free physical = 5365 ; free virtual = 22107
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1/system_tpu_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP system_tpu_0, cache-ID = bc7815546da86112
+INFO: [Coretcl 2-1174] Renamed 66 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2369.848 ; gain = 0.000 ; free physical = 5366 ; free virtual = 22115
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1/system_tpu_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_tpu_0_utilization_synth.rpt -pb system_tpu_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jul  2 21:22:33 2026...

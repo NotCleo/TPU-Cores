@@ -1,0 +1,1841 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul  2 20:33:17 2026
+# Process ID: 98454
+# Current directory: /home/amrut/TPU-Core/sobel-tpu/vivado
+# Command line: vivado -mode batch -source build_all.tcl
+# Log file: /home/amrut/TPU-Core/sobel-tpu/vivado/vivado.log
+# Journal file: /home/amrut/TPU-Core/sobel-tpu/vivado/vivado.jou
+# Running On: Maverick, OS: Linux, CPU Frequency: 4034.464 MHz, CPU Physical cores: 16, Host memory: 15454 MB
+#-----------------------------------------------------------
+source build_all.tcl
+# set here      [file dirname [file normalize [info script]]]
+# set repo      [file normalize $here/..]
+# set proj_dir  $here/build
+# set part      xc7a100tcsg324-1
+# set coe_file  $repo/fw/build/bootrom.coe
+# if {![file exists $coe_file]} {
+#     error "bootrom.coe not found -- run 'make' in $repo/fw first"
+# }
+# file mkdir $here/reports
+# create_project sobel_tpu_soc $proj_dir -part $part -force
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1318.641 ; gain = 0.027 ; free physical = 646 ; free virtual = 20614
+# add_files [list \
+#     $repo/rtl/pe.v \
+#     $repo/rtl/systolic_array.v \
+#     $repo/rtl/postproc.v \
+#     $repo/rtl/sobel_tpu.v \
+#     $repo/rtl/picorv32_bd_wrapper.v \
+#     $repo/../picorv32/picorv32.v]
+# add_files -fileset constrs_1 $here/arty_a7_100t.xdc
+# update_compile_order -fileset sources_1
+# create_bd_design "system"
+Wrote  : </home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.srcs/sources_1/bd/system/system.bd> 
+# create_bd_port -dir I -type clk -freq_hz 100000000 clk100
+# create_bd_port -dir I -type rst ck_rst
+# set_property CONFIG.POLARITY ACTIVE_LOW [get_bd_ports ck_rst]
+# create_bd_port -dir I uart_txd_in
+# create_bd_port -dir O uart_rxd_out
+# create_bd_port -dir I -from 3 -to 0 btn
+# create_bd_port -dir O -from 3 -to 0 led
+# create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+# set_property -dict [list \
+#     CONFIG.PRIM_IN_FREQ {100.000} \
+#     CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {100.000} \
+#     CONFIG.USE_LOCKED {true} \
+#     CONFIG.USE_RESET {false}] [get_bd_cells clk_wiz_0]
+# create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_0
+# set_property CONFIG.C_EXT_RESET_HIGH {0} [get_bd_cells rst_0]
+CRITICAL WARNING: [BD 41-737] Cannot set the parameter C_EXT_RESET_HIGH on /rst_0. It is read-only.
+# create_bd_cell -type module -reference picorv32_bd cpu
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from X_INTERFACE_INFO parameter from HDL file).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'resetn' of definition 'xilinx.com:signal:reset:1.0' (from X_INTERFACE_INFO parameter from HDL file).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'resetn' of definition 'xilinx.com:signal:reset:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'resetn'.
+INFO: [IP_Flow 19-4728] Bus Interface 'resetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-11770] Clock interface 'clk' has no FREQ_HZ parameter.
+# create_bd_cell -type module -reference sobel_tpu tpu
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'feeding' has a dependency on the module local parameter or undefined parameter 'S_COMPUTE'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'arr_clear' has a dependency on the module local parameter or undefined parameter 'S_CLEAR'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from X_INTERFACE_INFO parameter from HDL file).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'resetn' of definition 'xilinx.com:signal:reset:1.0' (from X_INTERFACE_INFO parameter from HDL file).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'resetn' of definition 'xilinx.com:signal:reset:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_BUSIF' with value 's_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'resetn'.
+INFO: [IP_Flow 19-4728] Bus Interface 'resetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-11770] Clock interface 'clk' has no FREQ_HZ parameter.
+# create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 axi_smc
+# set_property -dict [list CONFIG.NUM_SI {1} CONFIG.NUM_MI {4}] [get_bd_cells axi_smc]
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 bram_ctrl
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] system_bram_ctrl_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] system_bram_ctrl_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+# set_property -dict [list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.DATA_WIDTH {32}] \
+#     [get_bd_cells bram_ctrl]
+# create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 bram
+# set_property -dict [list \
+#     CONFIG.use_bram_block {BRAM_Controller} \
+#     CONFIG.Load_Init_File {true} \
+#     CONFIG.Coe_File "$coe_file" \
+#     CONFIG.Fill_Remaining_Memory_Locations {true} \
+#     CONFIG.Remaining_Memory_Locations {0}] [get_bd_cells bram]
+INFO: [IP_Flow 19-3484] Absolute path of file '/home/amrut/TPU-Core/sobel-tpu/fw/build/bootrom.coe' provided. It will be converted relative to IP Instance files '../../../../../../../../fw/build/bootrom.coe'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'Fill_Remaining_Memory_Locations' from 'false' to 'true' has been ignored for IP 'bram'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'Load_Init_File' from 'false' to 'true' has been ignored for IP 'bram'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'Coe_File' from 'no_coe_file_loaded' to '/home/amrut/TPU-Core/sobel-tpu/fw/build/bootrom.coe' has been ignored for IP 'bram'
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 uart
+# set_property -dict [list CONFIG.C_BAUDRATE {230400} CONFIG.C_DATA_BITS {8}] \
+#     [get_bd_cells uart]
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 gpio
+# set_property -dict [list \
+#     CONFIG.C_GPIO_WIDTH {4}  CONFIG.C_ALL_INPUTS {1} \
+#     CONFIG.C_IS_DUAL {1} \
+#     CONFIG.C_GPIO2_WIDTH {4} CONFIG.C_ALL_OUTPUTS_2 {1}] [get_bd_cells gpio]
+# connect_bd_net [get_bd_ports clk100] [get_bd_pins clk_wiz_0/clk_in1]
+# set clk [get_bd_pins clk_wiz_0/clk_out1]
+# foreach p {cpu/clk tpu/clk axi_smc/aclk bram_ctrl/s_axi_aclk \
+#            uart/s_axi_aclk gpio/s_axi_aclk rst_0/slowest_sync_clk} {
+#     connect_bd_net $clk [get_bd_pins $p]
+# }
+# connect_bd_net [get_bd_pins clk_wiz_0/locked] [get_bd_pins rst_0/dcm_locked]
+# connect_bd_net [get_bd_ports ck_rst] [get_bd_pins rst_0/ext_reset_in]
+# set rstn [get_bd_pins rst_0/peripheral_aresetn]
+# foreach p {cpu/resetn tpu/resetn axi_smc/aresetn bram_ctrl/s_axi_aresetn \
+#            uart/s_axi_aresetn gpio/s_axi_aresetn} {
+#     connect_bd_net $rstn [get_bd_pins $p]
+# }
+# connect_bd_intf_net [get_bd_intf_pins cpu/m_axi]      [get_bd_intf_pins axi_smc/S00_AXI]
+# connect_bd_intf_net [get_bd_intf_pins axi_smc/M00_AXI] [get_bd_intf_pins bram_ctrl/S_AXI]
+# connect_bd_intf_net [get_bd_intf_pins axi_smc/M01_AXI] [get_bd_intf_pins uart/S_AXI]
+# connect_bd_intf_net [get_bd_intf_pins axi_smc/M02_AXI] [get_bd_intf_pins gpio/S_AXI]
+# connect_bd_intf_net [get_bd_intf_pins axi_smc/M03_AXI] [get_bd_intf_pins tpu/s_axi]
+# connect_bd_intf_net [get_bd_intf_pins bram_ctrl/BRAM_PORTA] [get_bd_intf_pins bram/BRAM_PORTA]
+# connect_bd_net [get_bd_ports uart_txd_in]  [get_bd_pins uart/rx]
+WARNING: [BD 41-1306] The connection to interface pin </uart/rx> is being overridden by the user with net <uart_txd_in_1>. This pin will not be connected as a part of interface connection <UART>.
+# connect_bd_net [get_bd_ports uart_rxd_out] [get_bd_pins uart/tx]
+WARNING: [BD 41-1306] The connection to interface pin </uart/tx> is being overridden by the user with net <uart_tx>. This pin will not be connected as a part of interface connection <UART>.
+# connect_bd_net [get_bd_ports btn] [get_bd_pins gpio/gpio_io_i]
+WARNING: [BD 41-1306] The connection to interface pin </gpio/gpio_io_i> is being overridden by the user with net <btn_1>. This pin will not be connected as a part of interface connection <GPIO>.
+# connect_bd_net [get_bd_ports led] [get_bd_pins gpio/gpio2_io_o]
+WARNING: [BD 41-1306] The connection to interface pin </gpio/gpio2_io_o> is being overridden by the user with net <gpio_gpio2_io_o>. This pin will not be connected as a part of interface connection <GPIO2>.
+# proc seg_of {candidates} {
+#     foreach n $candidates {
+#         set s [get_bd_addr_segs -quiet $n]
+#         if {$s ne ""} { return $s }
+#     }
+#     error "no address segment found among: $candidates"
+# }
+# assign_bd_address -target_address_space [get_bd_addr_spaces cpu/m_axi] \
+#     [seg_of {bram_ctrl/S_AXI/Mem0}]              -offset 0x00000000 -range 256K
+Slave segment '/bram_ctrl/S_AXI/Mem0' is being assigned into address space '/cpu/m_axi' at <0x0000_0000 [ 256K ]>.
+# assign_bd_address -target_address_space [get_bd_addr_spaces cpu/m_axi] \
+#     [seg_of {gpio/S_AXI/Reg}]                    -offset 0x40000000 -range 64K
+Slave segment '/gpio/S_AXI/Reg' is being assigned into address space '/cpu/m_axi' at <0x4000_0000 [ 64K ]>.
+# assign_bd_address -target_address_space [get_bd_addr_spaces cpu/m_axi] \
+#     [seg_of {uart/S_AXI/Reg}]                    -offset 0x40600000 -range 64K
+Slave segment '/uart/S_AXI/Reg' is being assigned into address space '/cpu/m_axi' at <0x4060_0000 [ 64K ]>.
+# assign_bd_address -target_address_space [get_bd_addr_spaces cpu/m_axi] \
+#     [seg_of {tpu/s_axi/reg0 tpu/s_axi/Reg tpu/s_axi/mem0}] \
+#                                                  -offset 0x44000000 -range 256K
+Slave segment '/tpu/s_axi/reg0' is being assigned into address space '/cpu/m_axi' at <0x4400_0000 [ 256K ]>.
+# validate_bd_design
+INFO: [BD 5-943] Reserving offset range <0x0000_0000 [ 256K ]> from slave interface '/axi_smc/S00_AXI' to master interface '/axi_smc/M00_AXI'. This will be used by smartconnect on path for routing.
+INFO: [BD 5-943] Reserving offset range <0x4060_0000 [ 64K ]> from slave interface '/axi_smc/S00_AXI' to master interface '/axi_smc/M01_AXI'. This will be used by smartconnect on path for routing.
+INFO: [BD 5-943] Reserving offset range <0x4000_0000 [ 64K ]> from slave interface '/axi_smc/S00_AXI' to master interface '/axi_smc/M02_AXI'. This will be used by smartconnect on path for routing.
+INFO: [BD 5-943] Reserving offset range <0x4400_0000 [ 256K ]> from slave interface '/axi_smc/S00_AXI' to master interface '/axi_smc/M03_AXI'. This will be used by smartconnect on path for routing.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] system_axi_smc_0: SmartConnect system_axi_smc_0 is in Low-Area Mode.
+WARNING: [BD 41-2180] Resetting the memory initialization file of </bram> to default.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+validate_bd_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1887.164 ; gain = 68.312 ; free physical = 296 ; free virtual = 20209
+# save_bd_design
+Wrote  : </home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.srcs/sources_1/bd/system/system.bd> 
+# make_wrapper -files [get_files system.bd] -top
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/addra'(32) to pin: '/bram_ctrl/bram_addr_a'(18) - Only lower order bits will be connected.
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/addra'(32) to pin: '/bram_ctrl/bram_addr_a'(18) - Only lower order bits will be connected.
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/hdl/system_wrapper.v
+# add_files -norecurse $proj_dir/sobel_tpu_soc.gen/sources_1/bd/system/hdl/system_wrapper.v
+# set_property top system_wrapper [current_fileset]
+# update_compile_order -fileset sources_1
+# launch_runs synth_1 -jobs 8
+INFO: [BD 41-1662] The design 'system.bd' is already validated. Therefore parameter propagation will not be re-run.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/addra'(32) to pin: '/bram_ctrl/bram_addr_a'(18) - Only lower order bits will be connected.
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/bram/addra'(32) to pin: '/bram_ctrl/bram_addr_a'(18) - Only lower order bits will be connected.
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/sim/system.v
+Verilog Output written to : /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/hdl/system_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block cpu .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block tpu .
+Exporting to file /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/hw_handoff/system_axi_smc_0.hwh
+Generated Hardware Definition File /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/synth/system_axi_smc_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_smc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram_ctrl .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block bram .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uart .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block gpio .
+Exporting to file /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/hw_handoff/system.hwh
+Generated Hardware Definition File /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.hwdef
+INFO: [IP_Flow 19-6930] IPCACHE: runCacheChecks() number of threads = 8
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_axi_smc_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_bram_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_bram_ctrl_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_clk_wiz_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_cpu_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_gpio_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_rst_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_tpu_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP system_uart_0
+INFO: [IP_Flow 19-8020] IPCACHE: runCacheChecks() calling threadPool finishWork()
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_axi_smc_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_bram_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_bram_ctrl_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_clk_wiz_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_cpu_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_gpio_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_rst_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_tpu_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_uart_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Thu Jul  2 20:33:50 2026] Launched system_bram_ctrl_0_synth_1, system_gpio_0_synth_1, system_uart_0_synth_1, system_tpu_0_synth_1, system_clk_wiz_0_0_synth_1, system_cpu_0_synth_1, system_rst_0_0_synth_1, system_axi_smc_0_synth_1, system_bram_0_synth_1...
+Run output will be captured here:
+system_bram_ctrl_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_bram_ctrl_0_synth_1/runme.log
+system_gpio_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_gpio_0_synth_1/runme.log
+system_uart_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_uart_0_synth_1/runme.log
+system_tpu_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_tpu_0_synth_1/runme.log
+system_clk_wiz_0_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_clk_wiz_0_0_synth_1/runme.log
+system_cpu_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_cpu_0_synth_1/runme.log
+system_rst_0_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_rst_0_0_synth_1/runme.log
+system_axi_smc_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_axi_smc_0_synth_1/runme.log
+system_bram_0_synth_1: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/system_bram_0_synth_1/runme.log
+[Thu Jul  2 20:33:50 2026] Launched synth_1...
+Run output will be captured here: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/runme.log
+launch_runs: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2137.613 ; gain = 150.492 ; free physical = 305 ; free virtual = 20196
+# wait_on_run synth_1
+[Thu Jul  2 20:33:50 2026] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log system_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_wrapper.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source system_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1329.637 ; gain = 0.027 ; free physical = 10648 ; free virtual = 26094
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Vivado/2023.2/data/ip'.
+Command: synth_design -top system_wrapper -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 102782
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.211 ; gain = 406.598 ; free physical = 9603 ; free virtual = 25064
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_wrapper' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/hdl/system_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'system' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:13]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_smc_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_smc_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_axi_smc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'S00_AXI_bresp' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'S00_AXI_rresp' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M00_AXI_awqos' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M00_AXI_arqos' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M01_AXI_awprot' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M01_AXI_arprot' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M02_AXI_awprot' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7071] port 'M02_AXI_arprot' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+WARNING: [Synth 8-7023] instance 'axi_smc' of module 'system_axi_smc_0' has 111 connections declared, but only 103 given [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:152]
+INFO: [Synth 8-6157] synthesizing module 'system_bram_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_bram_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_bram_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_bram_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'rsta_busy' of module 'system_bram_0' is unconnected for instance 'bram' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:256]
+WARNING: [Synth 8-7023] instance 'bram' of module 'system_bram_0' has 8 connections declared, but only 7 given [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:256]
+INFO: [Synth 8-6157] synthesizing module 'system_bram_ctrl_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_bram_ctrl_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_bram_ctrl_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_bram_ctrl_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_clk_wiz_0_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_clk_wiz_0_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_cpu_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_cpu_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_cpu_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_cpu_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'trap' of module 'system_cpu_0' is unconnected for instance 'cpu' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:309]
+WARNING: [Synth 8-7023] instance 'cpu' of module 'system_cpu_0' has 20 connections declared, but only 19 given [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:309]
+INFO: [Synth 8-6157] synthesizing module 'system_gpio_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_gpio_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_gpio_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_gpio_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_rst_0_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_rst_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_rst_0_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_rst_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_rst_0_0' is unconnected for instance 'rst_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:351]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_rst_0_0' is unconnected for instance 'rst_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:351]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_rst_0_0' is unconnected for instance 'rst_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:351]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'system_rst_0_0' is unconnected for instance 'rst_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:351]
+WARNING: [Synth 8-7023] instance 'rst_0' of module 'system_rst_0_0' has 10 connections declared, but only 6 given [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:351]
+INFO: [Synth 8-6157] synthesizing module 'system_tpu_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_tpu_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_tpu_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_tpu_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_uart_0' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_uart_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_uart_0' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/.Xil/Vivado-102749-Maverick/realtime/system_uart_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'interrupt' of module 'system_uart_0' is unconnected for instance 'uart' [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:380]
+WARNING: [Synth 8-7023] instance 'uart' of module 'system_uart_0' has 22 connections declared, but only 21 given [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:380]
+INFO: [Synth 8-6155] done synthesizing module 'system' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/synth/system.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'system_wrapper' (0#1) [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/hdl/system_wrapper.v:13]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2178.180 ; gain = 492.566 ; free physical = 9500 ; free virtual = 24962
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2195.992 ; gain = 510.379 ; free physical = 9500 ; free virtual = 24962
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2195.992 ; gain = 510.379 ; free physical = 9500 ; free virtual = 24962
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2195.992 ; gain = 0.000 ; free physical = 9500 ; free virtual = 24962
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc] for cell 'system_i/clk_wiz_0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc] for cell 'system_i/clk_wiz_0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0/system_rst_0_0_in_context.xdc] for cell 'system_i/rst_0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0/system_rst_0_0_in_context.xdc] for cell 'system_i/rst_0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_cpu_0/system_cpu_0/system_cpu_0_in_context.xdc] for cell 'system_i/cpu'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_cpu_0/system_cpu_0/system_cpu_0_in_context.xdc] for cell 'system_i/cpu'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_tpu_0/system_tpu_0/system_tpu_0_in_context.xdc] for cell 'system_i/tpu'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_tpu_0/system_tpu_0/system_tpu_0_in_context.xdc] for cell 'system_i/tpu'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/system_axi_smc_0/system_axi_smc_0_in_context.xdc] for cell 'system_i/axi_smc'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/system_axi_smc_0/system_axi_smc_0_in_context.xdc] for cell 'system_i/axi_smc'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_ctrl_0/system_bram_ctrl_0/system_bram_ctrl_0_in_context.xdc] for cell 'system_i/bram_ctrl'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_ctrl_0/system_bram_ctrl_0/system_bram_ctrl_0_in_context.xdc] for cell 'system_i/bram_ctrl'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_0/system_bram_0/system_bram_0_in_context.xdc] for cell 'system_i/bram'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_0/system_bram_0/system_bram_0_in_context.xdc] for cell 'system_i/bram'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0/system_uart_0_in_context.xdc] for cell 'system_i/uart'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0/system_uart_0_in_context.xdc] for cell 'system_i/uart'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0/system_gpio_0_in_context.xdc] for cell 'system_i/gpio'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0/system_gpio_0_in_context.xdc] for cell 'system_i/gpio'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc]
+CRITICAL WARNING: [Constraints 18-1056] Clock 'sys_clk' completely overrides clock 'clk100'.
+New: create_clock -period 10.000 -name sys_clk [get_ports clk100], [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc:9]
+Previous: create_clock -period 10.000 [get_ports clk100], [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc:1]
+Resolution: Review the constraint files and remove the redundant clock definition(s). If the clock constraints are not saved in a file, you can first save the constraints to an XDC file and reload the design once the constraints have been corrected.
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/system_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/system_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2268.930 ; gain = 0.000 ; free physical = 9490 ; free virtual = 24953
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2268.965 ; gain = 0.000 ; free physical = 9490 ; free virtual = 24953
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'system_i/bram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24963
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24963
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk100. (constraint file  /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk100. (constraint file  /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/clk_wiz_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/rst_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/cpu. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/tpu. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/axi_smc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/bram_ctrl. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/bram. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/uart. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/gpio. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24963
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9497 ; free virtual = 24961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9496 ; free virtual = 24964
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9498 ; free virtual = 24966
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9498 ; free virtual = 24966
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9498 ; free virtual = 24966
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-------------------+----------+
+|      |BlackBox name      |Instances |
++------+-------------------+----------+
+|1     |system_axi_smc_0   |         1|
+|2     |system_bram_0      |         1|
+|3     |system_bram_ctrl_0 |         1|
+|4     |system_clk_wiz_0_0 |         1|
+|5     |system_cpu_0       |         1|
+|6     |system_gpio_0      |         1|
+|7     |system_rst_0_0     |         1|
+|8     |system_tpu_0       |         1|
+|9     |system_uart_0      |         1|
++------+-------------------+----------+
+
+Report Cell Usage: 
++------+-----------------+------+
+|      |Cell             |Count |
++------+-----------------+------+
+|1     |system_axi_smc   |     1|
+|2     |system_bram      |     1|
+|3     |system_bram_ctrl |     1|
+|4     |system_clk_wiz_0 |     1|
+|5     |system_cpu       |     1|
+|6     |system_gpio      |     1|
+|7     |system_rst_0     |     1|
+|8     |system_tpu       |     1|
+|9     |system_uart      |     1|
+|10    |IBUF             |     6|
+|11    |OBUF             |     5|
++------+-----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2268.965 ; gain = 510.379 ; free physical = 9501 ; free virtual = 24969
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2268.965 ; gain = 583.352 ; free physical = 9501 ; free virtual = 24969
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2268.965 ; gain = 0.000 ; free physical = 9579 ; free virtual = 25046
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2268.965 ; gain = 0.000 ; free physical = 9785 ; free virtual = 25253
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 9345e3a9
+INFO: [Common 17-83] Releasing license: Synthesis
+38 Infos, 22 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:18 . Memory (MB): peak = 2268.965 ; gain = 939.328 ; free physical = 9785 ; free virtual = 25254
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1896.660; main = 1575.172; forked = 396.814
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3228.406; main = 2236.918; forked = 991.488
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2268.965 ; gain = 0.000 ; free physical = 9785 ; free virtual = 25254
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/synth_1/system_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_wrapper_utilization_synth.rpt -pb system_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jul  2 20:36:31 2026...
+[Thu Jul  2 20:36:41 2026] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:10:23 ; elapsed = 00:02:52 . Memory (MB): peak = 2137.613 ; gain = 0.000 ; free physical = 11095 ; free virtual = 26592
+# if {[get_property PROGRESS [get_runs synth_1]] != "100%"} { error "synthesis failed" }
+# launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Jul  2 20:36:43 2026] Launched impl_1...
+Run output will be captured here: /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Thu Jul  2 20:36:43 2026] Waiting for impl_1 to finish...
+
+*** Running vivado
+    with args -log system_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source system_wrapper.tcl -notrace
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source system_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1302.250 ; gain = 33.840 ; free physical = 10618 ; free virtual = 26130
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Vivado/2023.2/data/ip'.
+Command: link_design -top system_wrapper -part xc7a100tcsg324-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/system_axi_smc_0.dcp' for cell 'system_i/axi_smc'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_0/system_bram_0.dcp' for cell 'system_i/bram'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_bram_ctrl_0/system_bram_ctrl_0.dcp' for cell 'system_i/bram_ctrl'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.dcp' for cell 'system_i/clk_wiz_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_cpu_0/system_cpu_0.dcp' for cell 'system_i/cpu'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0.dcp' for cell 'system_i/gpio'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0.dcp' for cell 'system_i/rst_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_tpu_0/system_tpu_0.dcp' for cell 'system_i/tpu'
+INFO: [Project 1-454] Reading design checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0.dcp' for cell 'system_i/uart'
+Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 1733.570 ; gain = 0.000 ; free physical = 10176 ; free virtual = 25689
+INFO: [Netlist 29-17] Analyzing 1883 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_ar_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:76]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:82]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:97]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:100]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:104]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:107]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:110]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:113]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:116]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:119]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:122]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:125]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:128]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:131]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:134]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:137]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:140]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:143]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:146]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:149]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:152]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:155]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:158]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:161]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:164]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:167]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:171]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:174]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc:178]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_48/bd_44e3_m03arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_ar_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:76]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:82]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:97]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:100]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:104]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:107]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:110]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:113]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:116]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:119]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:122]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:125]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:128]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:131]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:134]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:137]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:140]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:143]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:146]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:149]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:152]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:155]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:158]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:161]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:164]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:167]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:171]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:174]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc:178]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_34/bd_44e3_m01arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_r_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:76]
+INFO: [Common 17-14] Message 'Vivado 12-180' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:82]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:97]
+INFO: [Common 17-14] Message 'Vivado_Tcl 4-921' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc:97]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_35/bd_44e3_m01rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_36/bd_44e3_m01awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_aw_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_36/bd_44e3_m01awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_37/bd_44e3_m01wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_w_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_37/bd_44e3_m01wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_38/bd_44e3_m01bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_b_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_38/bd_44e3_m01bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m01_nodes/m01_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_41/bd_44e3_m02arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_ar_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_41/bd_44e3_m02arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_42/bd_44e3_m02rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_r_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_42/bd_44e3_m02rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_43/bd_44e3_m02awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_aw_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_43/bd_44e3_m02awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_44/bd_44e3_m02wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_w_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_44/bd_44e3_m02wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_45/bd_44e3_m02bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_b_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_45/bd_44e3_m02bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m02_nodes/m02_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_31/bd_44e3_m00bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_b_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_31/bd_44e3_m00bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_49/bd_44e3_m03rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_r_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_49/bd_44e3_m03rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_50/bd_44e3_m03awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_aw_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_50/bd_44e3_m03awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_51/bd_44e3_m03wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_w_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_51/bd_44e3_m03wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_52/bd_44e3_m03bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_b_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_52/bd_44e3_m03bn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m03_nodes/m03_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/smartconnect.xdc] for cell 'system_i/axi_smc/inst'
+WARNING: [Vivado_Tcl 4-919] Waiver ID 'CDC-1' -from list should not be empty. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/smartconnect.xdc:10]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/smartconnect.xdc] for cell 'system_i/axi_smc/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0_board.xdc] for cell 'system_i/uart/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0_board.xdc] for cell 'system_i/uart/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0.xdc] for cell 'system_i/uart/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_uart_0/system_uart_0.xdc] for cell 'system_i/uart/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0_board.xdc] for cell 'system_i/gpio/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0_board.xdc] for cell 'system_i/gpio/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0.xdc] for cell 'system_i/gpio/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_gpio_0/system_gpio_0.xdc] for cell 'system_i/gpio/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_16/bd_44e3_bni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_b_node/inst'
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_16/bd_44e3_bni_0_clocks.xdc:119]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_16/bd_44e3_bni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc] for cell 'system_i/clk_wiz_0/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc:54]
+INFO: [Timing 38-2] Deriving generated clocks [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc:54]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc] for cell 'system_i/clk_wiz_0/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0_board.xdc] for cell 'system_i/rst_0/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0_board.xdc] for cell 'system_i/rst_0/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0.xdc] for cell 'system_i/rst_0/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_rst_0_0/system_rst_0_0.xdc] for cell 'system_i/rst_0/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_1/bd_44e3_psr_aclk_0_board.xdc] for cell 'system_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_1/bd_44e3_psr_aclk_0_board.xdc] for cell 'system_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_1/bd_44e3_psr_aclk_0.xdc] for cell 'system_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_1/bd_44e3_psr_aclk_0.xdc] for cell 'system_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_12/bd_44e3_arni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_ar_node/inst'
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_12/bd_44e3_arni_0_clocks.xdc:119]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_12/bd_44e3_arni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_13/bd_44e3_rni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_r_node/inst'
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_13/bd_44e3_rni_0_clocks.xdc:119]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_13/bd_44e3_rni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_14/bd_44e3_awni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_aw_node/inst'
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_14/bd_44e3_awni_0_clocks.xdc:119]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_14/bd_44e3_awni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_15/bd_44e3_wni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_w_node/inst'
+WARNING: [Vivado_Tcl 4-935] Waiver ID 'CDC-1' is a duplicate and will not be added again. [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_15/bd_44e3_wni_0_clocks.xdc:119]
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_15/bd_44e3_wni_0_clocks.xdc] for cell 'system_i/axi_smc/inst/switchboards/i_nodes/i_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc] for cell 'system_i/clk_wiz_0/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc] for cell 'system_i/clk_wiz_0/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_21/bd_44e3_sarn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_ar_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_21/bd_44e3_sarn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_22/bd_44e3_srn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_r_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_22/bd_44e3_srn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_23/bd_44e3_sawn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_aw_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_23/bd_44e3_sawn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_24/bd_44e3_swn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_w_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_24/bd_44e3_swn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_25/bd_44e3_sbn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_b_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_25/bd_44e3_sbn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/s00_nodes/s00_b_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_27/bd_44e3_m00arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_ar_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_27/bd_44e3_m00arn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_ar_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_28/bd_44e3_m00rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_r_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_28/bd_44e3_m00rn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_r_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_29/bd_44e3_m00awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_aw_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_29/bd_44e3_m00awn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_aw_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_30/bd_44e3_m00wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_w_node/inst'
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_axi_smc_0/bd_0/ip/ip_30/bd_44e3_m00wn_0_clocks.xdc] for cell 'system_i/axi_smc/inst/m00_nodes/m00_w_node/inst'
+Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc]
+CRITICAL WARNING: [Constraints 18-1055] Clock 'sys_clk' completely overrides clock 'clk100', which is referenced by one or more other constraints. Any constraints that refer to the overridden clock will be ignored.
+New: create_clock -period 10.000 -name sys_clk [get_ports clk100], [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc:9]
+Previous: create_clock -period 10.000 [get_ports clk100], [/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.gen/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc:53]
+Resolution: Review the constraint files and remove the redundant clock definition(s). If the clock constraints are not saved in a file, you can first save the constraints to an XDC file and reload the design once the constraints have been corrected.
+Finished Parsing XDC File [/home/amrut/TPU-Core/sobel-tpu/vivado/arty_a7_100t.xdc]
+INFO: [Project 1-1714] 67 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-1687] 1300 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2599.645 ; gain = 0.000 ; free physical = 9574 ; free virtual = 25105
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 14 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+
+25 Infos, 106 Warnings, 1 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2599.680 ; gain = 1257.773 ; free physical = 9574 ; free virtual = 25105
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.42 . Memory (MB): peak = 2663.676 ; gain = 63.996 ; free physical = 9561 ; free virtual = 25091
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-2] Deriving generated clocks
+Ending Cache Timing Information Task | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00.97 ; elapsed = 00:00:00.41 . Memory (MB): peak = 2663.676 ; gain = 0.000 ; free physical = 9549 ; free virtual = 25081
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9250 ; free virtual = 24781
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9250 ; free virtual = 24781
+Phase 1 Initialization | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9250 ; free virtual = 24781
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Timer Update
+Phase 2.1 Timer Update | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00.65 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9250 ; free virtual = 24781
+
+Phase 2.2 Timing Data Collection
+Phase 2.2 Timing Data Collection | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00.68 ; elapsed = 00:00:00.22 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9247 ; free virtual = 24778
+Phase 2 Timer Update And Timing Data Collection | Checksum: 232288b7d
+
+Time (s): cpu = 00:00:00.68 ; elapsed = 00:00:00.22 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9247 ; free virtual = 24778
+
+Phase 3 Retarget
+INFO: [Opt 31-1566] Pulled 21 inverters resulting in an inversion of 124 pins
+INFO: [Opt 31-138] Pushed 6 inverter(s) to 14 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 17c5de066
+
+Time (s): cpu = 00:00:00.92 ; elapsed = 00:00:00.42 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Retarget | Checksum: 17c5de066
+INFO: [Opt 31-389] Phase Retarget created 53 cells and removed 81 cells
+INFO: [Opt 31-1021] In phase Retarget, 126 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
+Phase 4 Constant propagation | Checksum: 1bc6cc606
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.55 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Constant propagation | Checksum: 1bc6cc606
+INFO: [Opt 31-389] Phase Constant propagation created 21 cells and removed 120 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 120 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+Phase 5 Sweep | Checksum: 1a1b2c046
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Sweep | Checksum: 1a1b2c046
+INFO: [Opt 31-389] Phase Sweep created 4 cells and removed 226 cells
+INFO: [Opt 31-1021] In phase Sweep, 150 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 1a1b2c046
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+BUFG optimization | Checksum: 1a1b2c046
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][0]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][1]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][2]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][3]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][4]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][5]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][6]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][7]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][0]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][1]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][2]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][3]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][4]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][5]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][6]_srl16 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from system_i/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/INFERRED_GEN.data_reg[15][7]_srl16 due to none static srl address bits
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 1a1b2c046
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Shift Register Optimization | Checksum: 1a1b2c046
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 14c3056df
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Post Processing Netlist | Checksum: 14c3056df
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 145 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: e6018f74
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Phase 9.2 Verifying Netlist Connectivity | Checksum: e6018f74
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Phase 9 Finalization | Checksum: e6018f74
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              53  |              81  |                                            126  |
+|  Constant propagation         |              21  |             120  |                                            120  |
+|  Sweep                        |               4  |             226  |                                            150  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                            145  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: e6018f74
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24778
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2938.465 ; gain = 0.000 ; free physical = 9246 ; free virtual = 24777
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 96 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 32 newly gated: 13 Total Ports: 192
+Number of Flops added for Enable Generation: 3
+
+Ending PowerOpt Patch Enables Task | Checksum: 12fde4fe9
+
+Time (s): cpu = 00:00:00.32 ; elapsed = 00:00:00.28 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9033 ; free virtual = 24571
+Ending Power Optimization Task | Checksum: 12fde4fe9
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 3285.309 ; gain = 346.844 ; free physical = 9033 ; free virtual = 24571
+
+Starting Final Cleanup Task
+
+Starting Logic Optimization Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Logic Optimization Task | Checksum: ea24ad59
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.83 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9026 ; free virtual = 24564
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9026 ; free virtual = 24564
+Ending Final Cleanup Task | Checksum: ea24ad59
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9026 ; free virtual = 24564
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9026 ; free virtual = 24564
+Ending Netlist Obfuscation Task | Checksum: ea24ad59
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9026 ; free virtual = 24564
+INFO: [Common 17-83] Releasing license: Implementation
+56 Infos, 122 Warnings, 1 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 3285.309 ; gain = 685.629 ; free physical = 9026 ; free virtual = 24564
+INFO: [runtcl-4] Executing : report_drc -file system_wrapper_drc_opted.rpt -pb system_wrapper_drc_opted.pb -rpx system_wrapper_drc_opted.rpx
+Command: report_drc -file system_wrapper_drc_opted.rpt -pb system_wrapper_drc_opted.pb -rpx system_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9021 ; free virtual = 24560
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9021 ; free virtual = 24560
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9020 ; free virtual = 24561
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9020 ; free virtual = 24561
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9020 ; free virtual = 24561
+Wrote Device Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9019 ; free virtual = 24561
+Write Physdb Complete: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.05 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9019 ; free virtual = 24561
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9008 ; free virtual = 24553
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: d457b330
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9008 ; free virtual = 24553
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9008 ; free virtual = 24553
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 18470229a
+
+Time (s): cpu = 00:00:00.8 ; elapsed = 00:00:00.39 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9005 ; free virtual = 24555
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 130a62dea
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9002 ; free virtual = 24554
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 130a62dea
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9002 ; free virtual = 24554
+Phase 1 Placer Initialization | Checksum: 130a62dea
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9002 ; free virtual = 24554
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 19714ad11
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9007 ; free virtual = 24560
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 174ae3245
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9007 ; free virtual = 24560
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 174ae3245
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 9007 ; free virtual = 24560
+
+Phase 2.4 Global Placement Core
+
+Phase 2.4.1 UpdateTiming Before Physical Synthesis
+Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: faa88149
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:11 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8987 ; free virtual = 24542
+
+Phase 2.4.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 69 LUTNM shape to break, 332 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 23, two critical 46, total 69, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 210 nets or LUTs. Breaked 69 LUTs, combined 141 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1402] Pass 1: Identified 7 candidate cells for Shift Register optimization.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 5 nets or cells. Created 5 new cells, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8987 ; free virtual = 24544
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24545
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |           69  |            141  |                   210  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            5  |              0  |                     5  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |           74  |            141  |                   215  |           0  |           9  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.4.2 Physical Synthesis In Placer | Checksum: 1a4443a3c
+
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:12 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24545
+Phase 2.4 Global Placement Core | Checksum: 19994433c
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:13 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8987 ; free virtual = 24545
+Phase 2 Global Placement | Checksum: 19994433c
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:13 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8987 ; free virtual = 24545
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 15fe50bf0
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:13 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24546
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 134009333
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24546
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 214c0e25b
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24546
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 1f7359e82
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8988 ; free virtual = 24546
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 184c1cf14
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:17 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8983 ; free virtual = 24541
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 106a0ade8
+
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:19 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8982 ; free virtual = 24541
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 16e53c65f
+
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:20 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8982 ; free virtual = 24541
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 105d9e2b6
+
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:20 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8982 ; free virtual = 24541
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 179ef8527
+
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:23 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8982 ; free virtual = 24541
+Phase 3 Detail Placement | Checksum: 179ef8527
+
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:23 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8982 ; free virtual = 24541
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 1903b9a4f
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-2.433 | TNS=-62.608 |
+Phase 1 Physical Synthesis Initialization | Checksum: 21f5b2efc
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.41 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8979 ; free virtual = 24538
+INFO: [Place 46-33] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[6].u_pe/arr_clear, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-56] BUFG insertion identified 1 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 1, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 21f5b2efc
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.7 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8979 ; free virtual = 24538
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1903b9a4f
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:25 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8979 ; free virtual = 24538
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-0.862. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 1af38dd75
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:48 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:48 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+Phase 4.1 Post Commit Optimization | Checksum: 1af38dd75
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1af38dd75
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                2x2|                4x4|
+|___________|___________________|___________________|
+|      South|                1x1|                2x2|
+|___________|___________________|___________________|
+|       East|                2x2|                4x4|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 1af38dd75
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+Phase 4.3 Placer Reporting | Checksum: 1af38dd75
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1a3f87fb8
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+Ending Placer Task | Checksum: 17b8062d5
+
+Time (s): cpu = 00:01:33 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+99 Infos, 122 Warnings, 1 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:01:35 ; elapsed = 00:00:50 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8967 ; free virtual = 24527
+INFO: [runtcl-4] Executing : report_io -file system_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.16 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8980 ; free virtual = 24540
+INFO: [runtcl-4] Executing : report_utilization -file system_wrapper_utilization_placed.rpt -pb system_wrapper_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file system_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8981 ; free virtual = 24541
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24547
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.63 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24542
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24542
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24542
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24544
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24544
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.69 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8962 ; free virtual = 24544
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_placed.dcp' has been generated.
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8983 ; free virtual = 24551
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 5.03s |  WALL: 1.24s
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8983 ; free virtual = 24551
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.994 | TNS=-46.732 |
+Phase 1 Physical Synthesis Initialization | Checksum: 20a3fd2ea
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24551
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.994 | TNS=-46.732 |
+
+Phase 2 DSP Register Optimization
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 2 DSP Register Optimization | Checksum: 20a3fd2ea
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24551
+
+Phase 3 Critical Path Optimization
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.994 | TNS=-46.732 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/word_r_reg_n_0_[18]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/post_mode_reg[1]_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-710] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_n_0. Critical path length was reduced through logic transformation on cell system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_comp.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.988 | TNS=-46.654 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 10 pins.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_66_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.964 | TNS=-46.386 |
+INFO: [Physopt 32-663] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0.  Re-placed instance system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_comp
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.915 | TNS=-45.943 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/mag_sum[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata_reg[31]_i_36_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/p_1_in[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/abs00[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata_reg[31]_i_115_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_39_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r[16]_i_64_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_47_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[7].g_col[0].u_pe/acc_reg[2]_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3.  Re-placed instance system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/word_r[18]_i_1
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.897 | TNS=-45.907 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2].  Re-placed instance system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.862 | TNS=-45.685 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/word_r_reg_n_0_[21]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/word_r[21]_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/u_post/px3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_27_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata_reg[31]_i_5_n_7. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata_reg[31]_i_14_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata_reg[31]_i_39_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata_reg[31]_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/u_post/v_bias0[7]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 14 pins.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_47_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.855 | TNS=-45.566 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_46_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-710] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_46_n_0. Critical path length was reduced through logic transformation on cell system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_46_comp.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/word_r[21]_i_12_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.853 | TNS=-45.316 |
+INFO: [Physopt 32-663] Processed net system_i/tpu/inst/u_array/g_row[0].g_col[5].u_pe/acc_reg[12].  Re-placed instance system_i/tpu/inst/u_array/g_row[0].g_col[5].u_pe/acc_reg[12]
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[0].g_col[5].u_pe/acc_reg[12]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.841 | TNS=-44.800 |
+INFO: [Physopt 32-710] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_46_n_0. Critical path length was reduced through logic transformation on cell system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_46_comp_1.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[29]_i_43_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.840 | TNS=-44.782 |
+INFO: [Physopt 32-81] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_47_n_0. Replicated 1 times.
+INFO: [Physopt 32-735] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/obuf_wdata[31]_i_47_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.835 | TNS=-44.666 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/word_r_reg_n_0_[18]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/post_mode_reg[1]_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/mag_sum[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/p_1_in[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/abs00[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r[16]_i_64_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_47_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[7].g_col[0].u_pe/acc_reg[2]_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.835 | TNS=-44.666 |
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+Phase 3 Critical Path Optimization | Checksum: 20a3fd2ea
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:04 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+
+Phase 4 Critical Path Optimization
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.835 | TNS=-44.666 |
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/word_r_reg_n_0_[18]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/post_mode_reg[1]_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/mag_sum[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata_reg[31]_i_36_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/p_1_in[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/abs00[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata_reg[31]_i_115_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_39_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r[16]_i_64_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_47_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[7].g_col[0].u_pe/acc_reg[2]_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/word_r_reg_n_0_[18]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/clk_wiz_0/inst/clk_out1_system_clk_wiz_0_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/post_mode_reg[1]_1. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_10_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_33_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/obuf_wdata[31]_i_65_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/mag_sum[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/p_1_in[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/u_post/abs00[11]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r[16]_i_64_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[3].g_col[0].u_pe/word_r_reg[16]_i_47_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[7].g_col[0].u_pe/acc_reg[2]_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[3].u_pe/post_mode_reg[1]_3. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net system_i/tpu/inst/u_array/g_row[6].g_col[0].u_pe/acc_reg[2]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.835 | TNS=-44.666 |
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+Phase 4 Critical Path Optimization | Checksum: 20a3fd2ea
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:06 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+INFO: [Physopt 32-603] Post Physical Optimization Timing Summary | WNS=-0.835 | TNS=-44.666 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization   |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  DSP Register   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Critical Path  |          0.159  |          2.066  |            1  |              0  |                    10  |           0  |           2  |  00:00:04  |
+|  Total          |          0.159  |          2.066  |            1  |              0  |                    10  |           0  |           3  |  00:00:04  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+Ending Physical Synthesis Task | Checksum: ef99f0c8
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:06 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+INFO: [Common 17-83] Releasing license: Implementation
+219 Infos, 122 Warnings, 1 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:07 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8984 ; free virtual = 24552
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8981 ; free virtual = 24550
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.63 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24542
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24542
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24542
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24543
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24544
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.7 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8954 ; free virtual = 24544
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: b40217fd ConstDB: 0 ShapeSum: 8d5da8c RouteDB: 0
+Post Restoration Checksum: NetGraph: 88ee369d | NumContArr: d4b3fd38 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2e2f4290f
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8929 ; free virtual = 24508
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2e2f4290f
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8929 ; free virtual = 24508
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2e2f4290f
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:16 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8929 ; free virtual = 24508
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: fda40c90
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:18 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8894 ; free virtual = 24475
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.826 | TNS=-35.984| WHS=-0.277 | THS=-79.114|
+
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 15879
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 15878
+  Number of Partially Routed Nets     = 1
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: f98679b1
+
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:19 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8879 ; free virtual = 24460
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: f98679b1
+
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:19 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8879 ; free virtual = 24460
+
+Phase 3.2 Initial Net Routing
+Phase 3.2 Initial Net Routing | Checksum: 24566d0aa
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:21 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8843 ; free virtual = 24424
+Phase 3 Initial Routing | Checksum: 24566d0aa
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:21 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8843 ; free virtual = 24424
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 5017
+ Number of Nodes with overlaps = 1870
+ Number of Nodes with overlaps = 865
+ Number of Nodes with overlaps = 192
+ Number of Nodes with overlaps = 66
+ Number of Nodes with overlaps = 30
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.667 | TNS=-70.894| WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 2c42b9da0
+
+Time (s): cpu = 00:01:21 ; elapsed = 00:00:49 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8850 ; free virtual = 24432
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 1322
+ Number of Nodes with overlaps = 674
+ Number of Nodes with overlaps = 270
+ Number of Nodes with overlaps = 158
+ Number of Nodes with overlaps = 92
+ Number of Nodes with overlaps = 46
+ Number of Nodes with overlaps = 23
+ Number of Nodes with overlaps = 12
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.467 | TNS=-60.072| WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 1f9900167
+
+Time (s): cpu = 00:01:58 ; elapsed = 00:01:04 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8850 ; free virtual = 24432
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 649
+ Number of Nodes with overlaps = 297
+ Number of Nodes with overlaps = 184
+ Number of Nodes with overlaps = 88
+ Number of Nodes with overlaps = 31
+ Number of Nodes with overlaps = 11
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.500 | TNS=-62.214| WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: 2599919da
+
+Time (s): cpu = 00:02:22 ; elapsed = 00:01:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8850 ; free virtual = 24432
+Phase 4 Rip-up And Reroute | Checksum: 2599919da
+
+Time (s): cpu = 00:02:22 ; elapsed = 00:01:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8850 ; free virtual = 24432
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 2159cc560
+
+Time (s): cpu = 00:02:23 ; elapsed = 00:01:15 . Memory (MB): peak = 3285.309 ; gain = 0.000 ; free physical = 8850 ; free virtual = 24432
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.371 | TNS=-55.835| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 5.1 Delay CleanUp | Checksum: 32ece5f6c
+
+Time (s): cpu = 00:02:27 ; elapsed = 00:01:17 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 32ece5f6c
+
+Time (s): cpu = 00:02:27 ; elapsed = 00:01:17 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+Phase 5 Delay and Skew Optimization | Checksum: 32ece5f6c
+
+Time (s): cpu = 00:02:27 ; elapsed = 00:01:17 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 2a4df68cd
+
+Time (s): cpu = 00:02:29 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.369 | TNS=-52.501| WHS=0.040  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 31e0cea01
+
+Time (s): cpu = 00:02:29 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+Phase 6 Post Hold Fix | Checksum: 31e0cea01
+
+Time (s): cpu = 00:02:29 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 4.42534 %
+  Global Horizontal Routing Utilization  = 5.76662 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 69.3694%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 72.0721%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 85.2941%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_R_X25Y55 -> INT_R_X25Y55
+West Dir 1x1 Area, Max Cong = 77.9412%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 7 Route finalize | Checksum: 31e0cea01
+
+Time (s): cpu = 00:02:29 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 31e0cea01
+
+Time (s): cpu = 00:02:29 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 2d3a5d35e
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:01:18 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-1.369 | TNS=-52.501| WHS=0.040  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 10 Post Router Timing | Checksum: 2d3a5d35e
+
+Time (s): cpu = 00:02:32 ; elapsed = 00:01:19 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+INFO: [Route 35-16] Router Completed Successfully
+
+Phase 11 Post-Route Event Processing
+Phase 11 Post-Route Event Processing | Checksum: 9019180f
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:19 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+Ending Routing Task | Checksum: 9019180f
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:19 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+238 Infos, 123 Warnings, 1 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:02:35 ; elapsed = 00:01:20 . Memory (MB): peak = 3317.125 ; gain = 31.816 ; free physical = 8780 ; free virtual = 24362
+INFO: [runtcl-4] Executing : report_drc -file system_wrapper_drc_routed.rpt -pb system_wrapper_drc_routed.pb -rpx system_wrapper_drc_routed.rpx
+Command: report_drc -file system_wrapper_drc_routed.rpt -pb system_wrapper_drc_routed.pb -rpx system_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file system_wrapper_methodology_drc_routed.rpt -pb system_wrapper_methodology_drc_routed.pb -rpx system_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file /home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
+Command: report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+248 Infos, 123 Warnings, 1 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file system_wrapper_route_status.rpt -pb system_wrapper_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file system_wrapper_timing_summary_routed.rpt -pb system_wrapper_timing_summary_routed.pb -rpx system_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [runtcl-4] Executing : report_incremental_reuse -file system_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file system_wrapper_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file system_wrapper_bus_skew_routed.rpt -pb system_wrapper_bus_skew_routed.pb -rpx system_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8758 ; free virtual = 24352
+Wrote PlaceDB: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.61 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8731 ; free virtual = 24343
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8731 ; free virtual = 24343
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.35 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8723 ; free virtual = 24340
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8723 ; free virtual = 24342
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8723 ; free virtual = 24342
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.78 . Memory (MB): peak = 3397.164 ; gain = 0.000 ; free physical = 8723 ; free virtual = 24342
+INFO: [Common 17-1381] The checkpoint '/home/amrut/TPU-Core/sobel-tpu/vivado/build/sobel_tpu_soc.runs/impl_1/system_wrapper_routed.dcp' has been generated.
+Command: write_bitstream -force system_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0 output system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0__0 output system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0 multiplier stage system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0__0 multiplier stage system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd_reg multiplier stage system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd_reg__0 multiplier stage system_i/cpu/inst/u_cpu/picorv32_core/pcpi_mul/rd_reg__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP system_i/tpu/inst/ntiles_reg multiplier stage system_i/tpu/inst/ntiles_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC RTSTAT-10] No routable loads: 25 net(s) have no routable loads. The problem bus(es) and/or net(s) are system_i/axi_smc/inst/m01_nodes/m01_aw_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m00_nodes/m00_ar_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m02_nodes/m02_ar_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/s00_nodes/s00_b_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/s00_nodes/s00_r_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/s00_nodes/s00_aw_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m02_nodes/m02_aw_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m03_nodes/m03_r_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m02_nodes/m02_b_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m03_nodes/m03_b_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m02_nodes/m02_r_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m00_nodes/m00_r_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m01_nodes/m01_w_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m00_nodes/m00_b_node/inst/mi_handler_m_sc_areset_pipe, system_i/axi_smc/inst/m00_nodes/m00_w_node/inst/mi_handler_m_sc_areset_pipe... and (the first 15 of 25 listed).
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 8 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./system_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+14 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:23 ; elapsed = 00:00:20 . Memory (MB): peak = 3621.555 ; gain = 200.379 ; free physical = 8429 ; free virtual = 24038
+INFO: [Common 17-206] Exiting Vivado at Thu Jul  2 20:40:10 2026...
+[Thu Jul  2 20:40:15 2026] impl_1 finished
+wait_on_runs: Time (s): cpu = 00:00:00.75 ; elapsed = 00:03:33 . Memory (MB): peak = 2137.613 ; gain = 0.000 ; free physical = 10956 ; free virtual = 26565
+# if {[get_property PROGRESS [get_runs impl_1]] != "100%"} { error "implementation failed" }
+# open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2137.613 ; gain = 0.000 ; free physical = 10807 ; free virtual = 26465
+INFO: [Netlist 29-17] Analyzing 1883 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2137.613 ; gain = 0.000 ; free physical = 10679 ; free virtual = 26355
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2667.238 ; gain = 0.000 ; free physical = 10078 ; free virtual = 25758
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2667.238 ; gain = 0.000 ; free physical = 10078 ; free virtual = 25758
+Read PlaceDB: Time (s): cpu = 00:00:00.41 ; elapsed = 00:00:00.44 . Memory (MB): peak = 2667.238 ; gain = 0.000 ; free physical = 10072 ; free virtual = 25752
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2667.238 ; gain = 0.000 ; free physical = 10072 ; free virtual = 25752
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00.23 ; elapsed = 00:00:00.43 . Memory (MB): peak = 2671.238 ; gain = 4.000 ; free physical = 10040 ; free virtual = 25720
+Read Physdb Files: Time (s): cpu = 00:00:00.66 ; elapsed = 00:00:00.89 . Memory (MB): peak = 2671.238 ; gain = 4.000 ; free physical = 10040 ; free virtual = 25720
+Restored from archive | CPU: 0.730000 secs | Memory: 23.529892 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.92 . Memory (MB): peak = 2671.238 ; gain = 11.938 ; free physical = 10040 ; free virtual = 25720
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2671.238 ; gain = 0.000 ; free physical = 10032 ; free virtual = 25713
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 14 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+
+open_run: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 2671.273 ; gain = 533.660 ; free physical = 10032 ; free virtual = 25713
+# report_utilization    -file $here/reports/utilization.rpt
+# report_utilization    -hierarchical -file $here/reports/utilization_hier.rpt
+# report_timing_summary -file $here/reports/timing.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+# report_power          -file $here/reports/power.rpt
+Command: report_power -file /home/amrut/TPU-Core/sobel-tpu/vivado/reports/power.rpt
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+0 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+# file copy -force $proj_dir/sobel_tpu_soc.runs/impl_1/system_wrapper.bit $here/sobel_tpu.bit
+# set wns [get_property SLACK [get_timing_paths -max_paths 1 -nworst 1 -setup]]
+# puts "=============================================="
+==============================================
+# puts " BITSTREAM : $here/sobel_tpu.bit"
+ BITSTREAM : /home/amrut/TPU-Core/sobel-tpu/vivado/sobel_tpu.bit
+# puts " Setup WNS : $wns ns  (>= 0 means 100 MHz closed)"
+ Setup WNS : -1.369 ns  (>= 0 means 100 MHz closed)
+# puts " Reports   : $here/reports/"
+ Reports   : /home/amrut/TPU-Core/sobel-tpu/vivado/reports/
+# puts "=============================================="
+==============================================
+INFO: [Common 17-206] Exiting Vivado at Thu Jul  2 20:40:28 2026...
