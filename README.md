@@ -1,11 +1,10 @@
 # sobel-tpu
 
 Sobel image-filtering accelerator SoC for the Digilent Arty A7-100T:
-PicoRV32 (rv32im) + custom 8×8 output-stationary systolic array, single
-bitstream, bare metal, everything over one USB cable.
+PicoRV32 (rv32im) + custom 8×8 output-stationary systolic array
 
 **Full documentation: [docs/README.md](docs/README.md)** — architecture,
-Vivado IPI walkthrough, bring-up runbook, metrics methodology, CV template.
+Vivado IPI walkthrough, bring-up runbook, metrics methodology
 
 Quick start:
 ```bash
