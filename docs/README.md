@@ -369,30 +369,3 @@ collapse that 7.5 ms and push end-to-end speedup toward the compute number.
 (3) Cycle counts are image-independent (fixed dataflow, zero data-dependent
 branches in the TPU — its variance is exactly 0).
 
----
-
-## 10. CV entry
-
-Ready-to-paste LaTeX (matching the `\item \href{...} \hfill` + 3-bullet style):
-**`docs/cv_entry.tex`** — all numbers already filled from the measured results
-above. On the honesty question: the entry says *"verified bit-exact in
-cycle-accurate full-SoC simulation"* and *"closed post-route timing"* — both
-true today, no board required, and cycle counts/utilization/power are exactly
-what the board will report (same RTL, same firmware, deterministic dataflow).
-When the board arrives and `run_board.py` reproduces the table, append
-"validated on hardware".
-
----
-
-## 11. FAQ recap
-
-- **"Would Linux make my life easier?"** No — impossible on this core (no MMU),
-  and on a Linux-capable core it would cost days for zero accelerator insight.
-- **"One bitstream?"** Yes. Buttons select CPU/TPU runs; the host script does
-  the same over UART.
-- **"How do I upload images?"** UART (same USB cable as JTAG/power), 230400
-  baud, ~2.5 s per image, checksummed.
-- **"Kernel hardcoded?"** No — 72 bytes of int8 taps written to TPU registers
-  at runtime.
-- **"Can I gauge metrics without the board?"** Yes — every number except UART
-  wall-clock comes from simulation + Vivado reports (see §9).
