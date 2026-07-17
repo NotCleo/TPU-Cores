@@ -1,5 +1,7 @@
 # sobel-tpu
 
+Handy : https://cs231n.stanford.edu/slides/2016/
+
 Sobel image-filtering accelerator SoC for the Digilent Arty A7-100T:
 PicoRV32 (rv32im) + custom 8×8 output-stationary systolic array
 
